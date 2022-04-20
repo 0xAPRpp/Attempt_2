@@ -1,0 +1,15 @@
+# include <iostream>
+
+int main()
+{
+	int type_1_value_1{11}, type_1_value_2{12}; //Values of the same type in a single statement
+
+	float type_2_value_1{2.1}; //Value of type 2
+	unsigned long long type_3_value_1{3100000000000000000}; //Value of type 3
+
+
+	std::cout << "The values are: " << type_1_value_1 << ", " << type_1_value_2 << 
+		", " << type_2_value_1 << " and " << type_3_value_1 << "." << std::endl;
+
+	system("pause");
+}
