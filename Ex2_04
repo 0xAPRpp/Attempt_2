@@ -1,0 +1,23 @@
+//Converting yards input in decimal point
+# include <iostream>
+
+const double feet_per_yard{ 3 }; //There are 3 feet in one yard
+const double inches_per_foot{ 12 }; //There are 12 inches in a foot
+
+int main()
+{
+	double yards{}; //User input in decimal point
+	double feet{}, inches{}; //for storing feet and inches after calculating
+
+	std::cout << "Enter distance in yards: " << std::endl;
+	std::cin >> yards;
+
+	feet = ((((yards) - static_cast<int>(yards)) * feet_per_yard));
+	inches = ((((feet) - static_cast<int>(feet)) * inches_per_foot));
+
+	std::cout << "Converting decimal point yards to yards, feet and inches: " << static_cast<int>(yards) << (yards > 1 ? " yards, " : " yard, ")
+		<< static_cast<int>(feet) << (feet > 1 ? " feet, " : " foot, ")
+		<< inches << (inches > 1 ? " inches." : " inch.");
+
+	system("pause");
+}
