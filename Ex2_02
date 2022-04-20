@@ -1,0 +1,26 @@
+//Converting distances
+# include <iostream>
+
+const int feet_per_yard{ 3 }; //There are 3 feet in one yard
+const int inches_per_foot{ 12 }; //There are 12 inches in a foot
+
+int main()
+{
+	int yards{}, feet{}, inches{}; //Distance in different types
+
+	std::cout << "Enter distance in yards, feet and inches: " << std::endl;
+	std::cin >> yards >> feet >> inches;
+	std::cout << "The total distance in inches is : " << ((yards * feet_per_yard * inches_per_foot) + (feet * inches_per_foot) + inches) << (((yards * feet_per_yard * inches_per_foot) + (feet * inches_per_foot) + inches) > 1 ? " inches" : " inch") << std::endl;
+
+	std::cout << "Enter distance inches: " << std::endl;
+	std::cin >> inches;
+
+	yards = (inches / (feet_per_yard * inches_per_foot));
+	feet = (inches - (yards * feet_per_yard * inches_per_foot)) / inches_per_foot;
+	inches = inches - ((yards * feet_per_yard * inches_per_foot) + (feet * inches_per_foot));
+
+	std::cout << "The total distance is: " << yards << (yards > 1 ? " yards " : " yard ") << feet << (feet > 1 ? " feet " : " foot ") << inches << (inches > 1 ? " inches " : " inch ");
+
+
+	system("pause");
+}
