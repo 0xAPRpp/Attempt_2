@@ -1,0 +1,24 @@
+/*Exercise 2-2. Using your solution for Exercise 2-1, improve the code so that the user
+can control the precision of the output by entering the number of digits required. To
+really show off how accurate floating-point numbers can be, you can perhaps switch
+to double-precision floating-point arithmetic as well. You’ll need a more precise
+approximation of π. 3.141592653589793238 will do fine.*/
+
+# include <iostream>
+# include <iomanip>
+
+const long double value_of_pi{ 3.141592653589793238 }; //Global Variable for global constant
+//also allows use of name instead of value
+
+int main()
+{
+	long double radius{};
+
+	unsigned int precision{}; //Unsigned since the value cannot be negative
+
+	std::cout << "Enter Radius and precision: " << std::endl;
+	std::cin >> radius >> precision;
+
+	std::cout << "Area is: " << std::fixed << std::setprecision(precision) << value_of_pi * radius * radius << std::endl;
+
+}
