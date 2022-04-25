@@ -1,0 +1,37 @@
+/*Exercise 3-4. Write a program to read four characters from the keyboard and pack
+them into a single integer variable. Display the value of this variable as hexadecimal.
+Unpack the four bytes of the variable and output them in reverse order, with the loworder
+byte first.*/
+
+# include <iostream>
+# include <iomanip>
+
+const int inches_in_ft{ 12 };
+
+int main()
+{
+	char a{}, b{}, c{}, d{};
+
+	std::cin >> a >> b >> c >> d;
+
+	int abcd{};
+
+	abcd += static_cast<int>(a); 
+	abcd <<= 8;
+	
+	abcd += static_cast<int>(b);
+	abcd <<= 8;
+	
+	abcd += static_cast<int>(c);
+	abcd <<= 8;
+	
+	abcd += static_cast<int>(d);
+	
+	std::cout << std::hex << std::showbase << abcd << std::endl;
+
+	std::cout << static_cast<char>(abcd & 0xFF) << std::endl;
+	std::cout << static_cast<char>((abcd & 0xFF00)>>8) << std::endl;
+	std::cout << static_cast<char>((abcd & 0xFF0000) >> 16) << std::endl;
+	std::cout << static_cast<char>((abcd & 0xFF000000) >> 24) << std::endl;
+	system("pause");
+}
