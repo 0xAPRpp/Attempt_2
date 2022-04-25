@@ -1,0 +1,33 @@
+# include <iostream>
+# include <iomanip>
+
+int main()
+{
+	char ch{};
+
+	std::cin >> ch;
+
+	if (ch >= 65)
+	{
+		if (ch <= 90)
+		{
+			std::cout << "UpperCase" << std::endl;
+		}
+		else
+		{
+			if (ch >= 97)
+			{
+				if (ch <= 122)
+					std::cout << "LowerCase" << std::endl;
+				else
+					std::cout << "Not an alphabet" << std::endl;
+			}
+			else
+				std::cout << "Not an alphabet" << std::endl;
+		}
+	}
+	else
+		std::cout << "Not an alphabet" << std::endl;
+	
+	system("pause");
+}
