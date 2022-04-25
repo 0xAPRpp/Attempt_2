@@ -1,0 +1,27 @@
+/*Exercise 3-5. Write a program that defines an enumeration of type Color where the
+enumerators are Red, Green, Yellow, Purple, Blue, Black, and White. Define the type
+for enumerators as an unsigned integer type and arrange for the integer value of each
+enumerator to be the RGB combination for the color it represents (you can easily find
+the hexadecimal RGB encoding of any color online). Create variables of type Color
+initialized with enumerators for yellow, purple, and green. Access the enumerator value
+and extract and output the RGB components as separate values.*/
+
+# include <iostream>
+# include <iomanip>
+
+const int inches_in_ft{ 12 };
+
+int main()
+{
+	enum class Color :unsigned { red = 0xFF0000, green = 0x00FF00, yellow = 0xFFFF00, purple = 0x800080, blue = 0x0000FF, black = 0x000000, white = 0xFFFFFF }; 
+
+		Color one{ Color::yellow };
+		Color two{ Color::purple };
+		Color three{ Color::green };
+
+		std::cout << std::hex << std::showbase << ((static_cast<int>(one) & 0xFF0000) >> 16) << " " << ((static_cast<int>(one) & 0x00FF00)>>8) << " " << (static_cast<int>(one) & 0x0000FF) << std::endl;
+		std::cout << std::hex << std::showbase << ((static_cast<int>(two) & 0xFF0000) >> 16) << " " << ((static_cast<int>(two) & 0x00FF00) >> 8) << " " << (static_cast<int>(two) & 0x0000FF) << std::endl;
+		std::cout << std::hex << std::showbase << ((static_cast<int>(three) & 0xFF0000) >> 16) << " " << ((static_cast<int>(three) & 0x00FF00) >> 8) << " " << (static_cast<int>(three) & 0x0000FF) << std::endl;
+
+	system("pause");
+}
