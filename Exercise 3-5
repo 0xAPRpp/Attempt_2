@@ -9,8 +9,6 @@ and extract and output the RGB components as separate values.*/
 # include <iostream>
 # include <iomanip>
 
-const int inches_in_ft{ 12 };
-
 int main()
 {
 	enum class Color :unsigned { red = 0xFF0000, green = 0x00FF00, yellow = 0xFFFF00, purple = 0x800080, blue = 0x0000FF, black = 0x000000, white = 0xFFFFFF }; 
