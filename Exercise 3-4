@@ -6,8 +6,6 @@ byte first.*/
 # include <iostream>
 # include <iomanip>
 
-const int inches_in_ft{ 12 };
-
 int main()
 {
 	char a{}, b{}, c{}, d{};
