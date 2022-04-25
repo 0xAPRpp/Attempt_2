@@ -1,0 +1,14 @@
+# include <iostream>
+# include <iomanip>
+
+int main()
+{
+	char value_1{}, value_2{};
+
+	std::cin >> value_1 >> value_2;
+
+	std::cout << std::boolalpha << (value_1 > value_2) << std::endl;
+	std::cout << (value_1 == value_2) << std::endl;
+
+	system("pause");
+}
