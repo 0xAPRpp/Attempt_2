@@ -1,0 +1,35 @@
+# include <iostream>
+# include <iomanip>
+# include <cctype>
+
+int main()
+{
+	char ch{};
+	std::cin >> ch;
+
+	if (std::isalpha(ch))
+	{
+		switch (std::tolower(ch))
+		{
+		case 'a':
+			[[fallthrough]];
+		case 'e':
+			[[fallthrough]];
+		case 'i':
+			[[fallthrough]];
+		case 'o':
+			[[fallthrough]];
+		case 'u':
+		{
+			std::cout << "Vowel" << std::endl;
+			break;
+		}
+		default:
+			std::cout << "Not a vowel" << std::endl;
+		}
+	}
+	else
+		std::cout << "Not an alphabet" << std::endl;
+
+	system("pause");
+}
