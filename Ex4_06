@@ -1,0 +1,14 @@
+# include <iostream>
+# include <iomanip>
+
+int main()
+{
+	unsigned brown{}, white{};
+
+	std::cin >> brown >> white;
+
+	std::cout << "Brown " << ((brown > 1) ? "mice: " : "mouse: ") << brown << 
+		 " and White " << ((white > 1) ? "mice: " : "mouse: ") << white << std::endl;
+
+	system("pause");
+}
