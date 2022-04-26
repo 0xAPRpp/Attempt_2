@@ -1,0 +1,24 @@
+# include <iostream>
+# include <iomanip>
+
+int main()
+{
+	unsigned int age{}, income{}, balance{};
+
+	std::cin >> age >> income >> balance;
+
+	if ((age > 21) && ((income > 25000) || (balance > 100000)))
+	{
+		std::cout << "Eligible" << std::endl;
+		if ((income * 2) < (balance / 2))
+		{
+			std::cout << "Loan amount: " << income * 2 << std::endl;
+		}
+		else
+			std::cout << "Loan amount: " << balance/2 << std::endl;		
+	}
+	else
+		std::cout << "Ineligible" << std::endl;
+
+	system("pause");
+}
