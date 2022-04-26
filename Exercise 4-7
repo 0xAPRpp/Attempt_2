@@ -1,0 +1,52 @@
+/*Exercise 4-7. Implement a program that prompts for input of a letter. Use a library
+function to determine whether the letter is a vowel and whether it is lowercase or not,
+and output the result. Finally, output the lowercase letter together with its character
+code as a binary value.
+Hint: Even though starting with C++14, C++ supports binary integral literals (of
+form 0b11001010; see Chapter 2), C++ standard output functions and streams
+do not support outputting integral values in binary format. They mostly do support
+hexadecimal and octal formatting—for std::cout, for instance, you can use the std::hex
+and std::oct output manipulators defined in <ios>. But to output a character in binary
+format, you’ll thus have to write some code yourself. It shouldn’t be too hard, though:
+a char normally has only eight bits, remember? You can just stream these bits one by
+one. Perhaps these binary integer literals can be helpful as well—why else would we
+have mentioned them at the start of this hint?*/
+
+# include <iostream>
+# include <iomanip>
+# include <cctype>
+
+int main()
+{
+	char ch{};
+	std::cin >> ch;
+
+	if (isalpha(ch))
+	{
+		if ((tolower(ch) == 'a') || (tolower(ch) == 'e') || (tolower(ch) == 'i') || (tolower(ch) == 'o') || (tolower(ch) == 'u'))
+			std::cout << "Vowel" << std::endl;
+		else
+			std::cout << "Consonant" << std::endl;
+		if(isupper(ch))
+			std::cout << "Upper Case" << std::endl;
+		else
+			std::cout << "Lower Case" << std::endl;
+	}
+	else
+		std::cout << "Not an alphabet" << std::endl;
+
+	int bit0{}, bit1{}, bit2{}, bit3{}, bit4{}, bit5{}, bit6{}, bit7{};
+
+	bit0 = static_cast<int>(ch) % 2;
+	bit1 = (static_cast<int>(ch) / 2) % 2;
+	bit2 = ((static_cast<int>(ch) / 2) / 2) % 2;
+	bit3 = (((static_cast<int>(ch) / 2) / 2) / 2) % 2;
+	bit4 = ((((static_cast<int>(ch) / 2) / 2) / 2) / 2) % 2;
+	bit5 = (((((static_cast<int>(ch) / 2) / 2) / 2) / 2) / 2) % 2;
+	bit6 = ((((((static_cast<int>(ch) / 2) / 2) / 2) / 2) / 2) / 2) % 2;
+	bit7 = (((((((static_cast<int>(ch) / 2) / 2) / 2) / 2) / 2) / 2) / 2) % 2;
+
+	std::cout << static_cast<char>(tolower(ch)) << " " << bit7 << bit6 << bit5 << bit4 << bit3 << bit2 << bit1 << bit0 << std::endl;
+
+	system("pause");
+}
