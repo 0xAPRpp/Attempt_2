@@ -1,0 +1,116 @@
+/*Exercise 4-4. It’s time to make good on a promise. Somewhere in this chapter we
+said we’d look for someone “who is older than 21, younger than 35, is female, has
+a bachelor’s or master’s degree, is unmarried, and speaks Hindi or Urdu.” Write a
+program that prompts the user for these qualifications and then outputs whether they
+qualify for these very specific requirements. To this end, you should define an integer
+variable age, a character variable gender (to hold 'm' for male and 'f' for female),
+a variable degree of an enumeration type AcademicDegree (possible values: none,
+associate, bachelor, professional, master, doctor), and three Boolean variables:
+married, speaksHindi, and speaksUrdu. Emulate a trivial online job interview, and
+query your applicant for input on all these variables. People who enter invalid values do
+not qualify, of course, and should be ruled out as early as possible (that is, immediately
+after entering any invalid value; ruling them out precognitively prior to entering invalid
+values, sadly, is not possible yet in Standard C++).*/
+
+# include <iostream>
+# include <iomanip>
+
+int main()
+{
+	int age{};
+	char gender{};
+	enum class AcademicDegree { none, associate, bachelor, professional, master, doctor };
+	AcademicDegree degree{};
+	bool married{}, speaksHindi{}, speaksUrdu{};
+
+	std::cin >> age;
+	if ((age < 0) || (age > 130))
+	{
+		std::cout << "Invalid input" << std::endl;
+		return 0;
+	}
+	
+	std::cin >> gender;
+	if ((tolower(gender) != 'f') && (tolower(gender) != 'm'))
+	{
+		std::cout << "Invalid input" << std::endl;
+		return 0;
+	}
+
+	int degree_value{};
+	std::cin >> degree_value;
+		
+	switch (degree_value)
+	{
+	case 0:
+		degree = AcademicDegree::none;
+		break;
+	case 1:
+		degree = AcademicDegree::associate;
+		break;
+	case 2:
+		degree = AcademicDegree::bachelor;
+		break;
+	case 3:
+		degree = AcademicDegree::professional;
+		break;
+	case 4:
+		degree = AcademicDegree::master;
+		break;
+	case 5:
+		degree = AcademicDegree::doctor;
+		break;
+	default:
+		std::cout << "Incorrect Entry." << std::endl;
+		return 0;
+	}
+
+	char yes_no{};
+	std::cin >> yes_no;
+	if ((tolower(yes_no) != 'y') && (tolower(yes_no) != 'n'))
+	{
+		std::cout << "Invalid input" << std::endl;
+		return 0;
+	}
+	else
+		if (tolower(yes_no) == 'y')
+			married = true;
+		else
+			married = false;
+
+	std::cin >> yes_no;
+	if ((tolower(yes_no) != 'y') && (tolower(yes_no) != 'n'))
+	{
+		std::cout << "Invalid input" << std::endl;
+		return 0;
+	}
+	else
+		if (tolower(yes_no) == 'y')
+			speaksHindi = true;
+		else
+			speaksHindi = false;
+
+	std::cin >> yes_no;
+	if ((tolower(yes_no) != 'y') && (tolower(yes_no) != 'n'))
+	{
+		std::cout << "Invalid input" << std::endl;
+		return 0;
+	}
+	else
+		if (tolower(yes_no) == 'y')
+			speaksUrdu = true;
+		else
+			speaksUrdu = false;
+	
+	if (((age > 21) && (age < 35))
+		&& (tolower(gender) == 'f')
+		&& ((static_cast<int>(degree_value) == 2) || (static_cast<int>(degree_value) == 4))
+		&& (married == false)
+		&& ((speaksHindi == true) || (speaksUrdu == true))
+		)
+		std::cout << "You are selected" << std::endl;
+	else
+		std::cout << "Criteria does not match" << std::endl;
+
+	system("pause");
+}
