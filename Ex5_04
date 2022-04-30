@@ -1,0 +1,23 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+using namespace std;
+
+int main()
+{
+	size_t limit{};
+
+	std::cin >> limit;
+
+	std::cout << std::setw(8) << "integer" << setw(10) << "sum" << setw(25) << "factorial" << std::endl;
+	for (size_t i{ 1 }, sum{}, factorial{1}; i <= limit; i++)
+	{
+		sum += i;
+		factorial *= i;
+		std::cout << std::setw(8) << i << setw(10) << sum << setw(25) << factorial << std::endl;
+	}
+
+	system("pause");
+}
