@@ -1,0 +1,26 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+using namespace std;
+
+int main()
+{
+	int limit{  };
+	cin >> limit;
+
+	long long i{ 1 }, sum{}, fact{1};
+	std::cout << std::setw(8) << "integer" << std::setw(8) << " sum"
+		<< std::setw(20) << " factorial" << std::endl;
+	while (i <= limit)
+	{
+		sum += i;
+		fact *= i;
+		std::cout << std::setw(8) << i << std::setw(8) << sum
+			<< std::setw(20) << fact << std::endl;
+		i++;
+	}
+
+	system("pause");
+}
