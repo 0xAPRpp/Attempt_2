@@ -1,0 +1,23 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+const double value_of_pi{ 3.14159265358979323846 };
+
+int main()
+{
+	double area{};
+	size_t columns_per_line{  };
+
+	for (double radius{ 0.2 }; radius < 3.0; radius += 0.2)
+	{
+		std::cout << "radius = " << std::fixed << std::setw(5) << std::setprecision(2) << std::setfill(' ') << radius 
+			<< "  area = " << std::setw(5) << std::setprecision(2) << value_of_pi * radius * radius << " ";
+		columns_per_line++;
+		if (columns_per_line % 3 == 0)
+			std::cout << std::endl;
+	}
+
+	system("pause");
+}
