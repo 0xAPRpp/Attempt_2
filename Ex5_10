@@ -1,0 +1,37 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+using namespace std;
+
+int main()
+{
+	const size_t size{1000};
+	char text[size];
+
+	std::cin.getline(text,size);
+
+	size_t i{}, vowels{}, consonants{};
+	while (text[i] != '\0')
+	{
+		if (isalpha(text[i]))
+		{
+			switch (tolower(text[i]))
+			{
+			case 'a': case 'e': case 'i': case 'o': case 'u':
+				vowels++;
+				break;
+			default:
+				consonants++;
+				break;
+			}
+		}
+		i++;
+	}
+
+	std::cout << vowels << " " << consonants << endl;
+
+	system("pause");
+}
