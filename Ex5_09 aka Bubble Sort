@@ -1,0 +1,55 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+using namespace std;
+
+int main()
+{
+	const size_t size{100};
+	double arr_of_values[size]{};
+
+	double value{};
+	size_t count{};
+
+	for (size_t i{}; i < size; i++)
+	{
+		std::cin >> value;
+		if (value != 0)
+		{
+			arr_of_values[i] = value;
+			count++;
+		}
+		else
+			break;
+	}
+
+	for (size_t i{}; i < count; i++)
+		std::cout << arr_of_values[i] << std::endl;
+
+	bool swapped{ false };
+	while(true)
+	{
+		swapped = false;
+		for (size_t i{}; i < (count-1); i++)
+		{
+			if (arr_of_values[i] > arr_of_values[i + 1])
+			{
+				double temp{ };
+				temp = arr_of_values[i];
+				arr_of_values[i] = arr_of_values[i + 1];
+				arr_of_values[i + 1] = temp;
+				swapped = true;
+			}
+		}
+		if (swapped == false)
+			break;
+	}
+
+	for (size_t i{}; i < count; i++)
+		std::cout << arr_of_values[i] << std::endl;
+
+	system("pause");
+}
