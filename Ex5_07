@@ -1,0 +1,44 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+using namespace std;
+
+int main()
+{
+	size_t max_table_value{}, no_of_tables{};
+
+	char yes_no{};
+
+	do
+	{
+		std::cin >> max_table_value >> no_of_tables;
+		std::cout << setw(10) << "|";
+		for (size_t i{ 1 }; i <= max_table_value; i++)
+		{
+			std::cout << setw(9) << i << "|";
+		}
+		cout << endl;
+		for (size_t i{ 1 }; i <= (max_table_value + 1); i++)
+		{
+			std::cout << setw(10) << setfill('-') << '-';
+		}
+		cout << endl;
+		cout << setfill(' ');
+		for (size_t i{ 1 }; i <= no_of_tables; i++)
+		{
+			std::cout << setw(9) << i << "|";
+			for (size_t j{ 1 }; j <= max_table_value; j++)
+			{
+				std::cout << setw(9) << i * j << "|";
+			}
+			std::cout << endl;
+		}
+		std::cin >> yes_no;
+	} while (tolower(yes_no) == 'y');
+	cout << endl;
+
+	system("pause");
+}	
