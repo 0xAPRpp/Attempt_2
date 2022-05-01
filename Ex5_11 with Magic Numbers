@@ -1,0 +1,26 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+using namespace std;
+
+int main()
+{
+	char stars[][80]{
+	"Tom Cruise",
+	"Benedict Cumberbatch",
+	"Tom Holland",
+	"Gomez"
+	};
+
+	size_t num{};
+	std::cin >> num;
+
+	cout << size(stars) << endl;
+
+	std::cout << "You chose: " << stars[num] << std::endl;
+
+	system("pause");
+}	
