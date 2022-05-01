@@ -1,0 +1,29 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+using namespace std;
+
+int main()
+{
+	double temperature{}, total{};
+	char yes_no{};
+	size_t count{};
+
+	do
+	{
+		std::cin >> temperature;
+		count++;
+		std::cin >> yes_no;
+
+		total += temperature;
+
+
+	} while (tolower(yes_no) == 'y');
+
+	std::cout << total / count << std::endl;
+
+	system("pause");
+}
