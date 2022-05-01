@@ -1,0 +1,29 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+
+using namespace std;
+
+int main()
+{
+	cout << "Character " << "Hexadecimal " << "Decimal" << endl;
+	std::cout << static_cast<int>(std::numeric_limits<unsigned char>::min()) << std::endl;
+	std::cout << static_cast<int>(std::numeric_limits<unsigned char>::max()) << std::endl;
+	std::cout << static_cast<char>(std::numeric_limits<unsigned char>::max()) << std::endl;
+
+	size_t ch{ };
+
+	do 
+	{
+		if (isprint(ch))
+			cout << setw(9) << static_cast<char>(ch) << std::hex << setw(12) << std::uppercase << static_cast<int>(ch) << std::dec << setw(8) << static_cast<int>(ch) << std::endl;
+		else
+			continue;	
+	} while (ch++ <= std::numeric_limits<char>::max());
+
+	std::cout << "gg" << std::endl;
+
+	system("pause");
+}
