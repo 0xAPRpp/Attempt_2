@@ -1,0 +1,53 @@
+/*Exercise 5-5. Write a program equivalent to that of Exercise 5-4, except for the
+following:
+If before you used a for loop to count the characters, you now use while, or vice versa.
+This time you should first reverse the characters in the array, before printing them
+out left to right (for the sake of the exercise you could still use a loop to print out the
+characters one by one).*/
+
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	const size_t size{1000};
+
+	std::array<char, size> text{}, temp{};
+
+	std::cin.getline(text.data(), size, '*');
+
+	size_t count{};
+	size_t i{};
+	while (text[i] != '\0')
+	{
+		count++;
+		i++;
+	}
+
+	std::cout << count << std::endl;
+
+	for (size_t i{ count }, j{}; i > 0; i--, j++)
+	{
+		temp[j] = text[i-1];
+	}
+
+	for (auto x : temp)
+		std::cout << x;
+
+	cout << endl;
+
+	text = temp;
+
+	for (auto x : text)
+		std::cout << x;
+
+	cout << endl;
+
+	system("pause");
+}	
