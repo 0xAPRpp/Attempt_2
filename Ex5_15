@@ -1,0 +1,47 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	std::vector<float> numbers{};
+	float value{};
+
+	while (true)
+	{
+		std::cin >> value;
+
+		if (value != 0)
+			numbers.push_back(value);
+		else
+			break;
+	}
+	
+	
+	while (true)
+	{
+		bool swapped{ false };
+		for (size_t i{}; i < (std::size(numbers) - 1); i++)
+		{
+			if (float temp{}; (numbers[i] > numbers[i + 1]))   //std::swap(numbers[i], numbers[i + 1]);
+			{
+				temp = numbers[i];
+				numbers[i] = numbers[i + 1];
+				numbers[i + 1] = temp;
+				swapped = true;
+			}
+		}
+		if (swapped == false)
+			break;
+	}
+
+	for (auto x : numbers)
+		std::cout << x << " ";
+
+	system("pause");
+}
