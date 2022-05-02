@@ -1,0 +1,75 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	
+	std::cout << setw(8) << "Kg--> " << '|';
+	size_t count{};
+
+	for (float i{ 50 }; i <= 110; i += 2.5)
+	{
+		cout << setw(7) <<  i << '|';
+		count++;
+	}
+	
+	cout << endl;
+
+	std::cout << setw(8) << "lb--> " << '|';
+	
+	for (float i{ 50 }; i <= 110; i += 2.5)
+	{
+		cout << setw(7) << fixed << setprecision(2) << i * 2.20462 << '|';
+	}
+	
+	cout << endl;
+
+	for (size_t i{0}; i < count+1; i++)
+	{
+		cout << setw(8) << setfill('-') << '-';
+	}
+
+	cout <<'-' << endl;
+	cout << setfill(' ');
+
+	float h{ 48.0 };
+	size_t i_count{0};
+	for (size_t i{4}, j{};  i < 8; j += 2)
+	{
+		if (j == 12)
+			j = 0;
+
+		cout << " " << i << "ft" << setw(2) <<j << "in" << '|';
+		i_count++;
+
+		float  hm{};
+		//Converting inches to metres
+		hm = (h * 2.54) / 100;
+		for (float w{ 50 }; w < 112; w += 2.5)
+		{
+			cout << setw(7) << fixed << setprecision(2) << w / (hm * hm) << '|';
+		}
+
+		if (i_count % 6 == 0)
+		{
+			i++;			
+		}
+
+		cout << endl;
+		h += 2.0;	
+
+		if (h > 84.1)
+			break;
+
+	}
+
+	cout << 0%6 << endl;
+
+	system("pause");
+}	
