@@ -1,0 +1,38 @@
+/*Exercise 5-3. Create a program that uses a do-while loop to count the number of
+nonwhitespace characters entered on a line. The count should end when the first
+# character is found.*/
+
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	const size_t size{1000};
+	std::array<char, size> text{};
+
+	std::cin.getline(text.data(), size);
+
+	if (text[0] == '\0')
+		return 1;
+
+	size_t i{}, count{};
+	do 
+	{
+		if (isspace(text[i]))
+			continue;
+
+		count++;
+
+
+	} while (text[i++] != '#');
+
+	std::cout << count << std::endl;
+
+	system("pause");
+}	
