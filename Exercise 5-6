@@ -1,0 +1,33 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	size_t upper_bound{};
+	std::cin >> upper_bound;
+
+	std::vector<unsigned long long> numbers(upper_bound);
+
+	for (size_t i{ 0 }; i < upper_bound; i++)
+	{
+		numbers[i] = i+1;
+	}
+
+	for (size_t i{}, perline{}; i < upper_bound; i++)
+	{
+		if ((numbers[i] % 7 == 0) || (numbers[i] % 13 == 0))
+			continue;
+
+		std::cout << setw(15) << numbers[i];
+		if (++perline % 10 == 0)
+			std::cout << std::endl;
+	}
+
+	system("pause");
+}
