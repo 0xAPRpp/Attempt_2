@@ -1,0 +1,24 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	const size_t size{93};
+	std::array<size_t, size> fib{1,1};
+
+	for (size_t i{ 2 }; i < 93; i++)
+	{
+		fib[i] = fib[i - 2] + fib[i - 1];
+	}
+
+	for (auto x : fib)
+		std::cout << x << std::endl;
+
+	system("pause");
+}	
