@@ -1,0 +1,39 @@
+/*Exercise 5-4. Use std::cin.getline(…) to obtain a C-style string of maximum 1,000
+characters from the user. Count the number of characters the user entered using an
+appropriate loop. Next, write a second loop that prints out all characters, one by one,
+but in a reverse order.*/
+
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	const size_t size{1000};
+
+	std::array<char, size> text{};
+
+	std::cin.getline(text.data(), size, '*');
+
+	size_t count{};
+	for (size_t i{}; text[i] != '\0'; i++)
+	{
+		count++;
+	}
+
+	std::cout << count << std::endl;
+
+	for (size_t i{ count }; i > 0 ; i--)
+	{
+		std::cout << text[i - 1] ;
+	}
+
+
+
+	system("pause");
+}	
