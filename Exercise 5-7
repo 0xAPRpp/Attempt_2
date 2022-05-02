@@ -1,0 +1,68 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	std::vector<size_t> p_no{};
+	std::vector<size_t> quantity{};
+	std::vector<double> unit_price{};
+
+	size_t p{};
+	size_t q{};
+	double up{};
+
+
+	char yes_no{'y'};
+
+	while (tolower(yes_no) == 'y')
+	{
+		std::cin >> p >> q >> up;
+		p_no.push_back(p);
+		quantity.push_back(q);
+		unit_price.push_back(up);
+
+		std::cin >> yes_no;
+
+		while ((tolower(yes_no) != 'n') && (tolower(yes_no) != 'y'))
+		{
+			std::cout << "Please use Y or N: Try again" << std::endl;
+			std::cin >> yes_no;
+		}
+	}
+
+	for (size_t i{}; i < 53; i++)
+		std::cout << '_';
+
+	std::cout << std::endl;
+
+	std::cout << std::left << setw(12) << "Product" << setw(13) << "Quantity" 
+		                   << setw(15) << "Unit Price" << setw(13) << "Cost" << std::endl;
+
+	for (size_t i{}; i < 53; i++)
+		std::cout << '_';
+
+	std::cout << std::endl;
+
+	double total{};
+
+	for (size_t i{}; i < std::size(p_no); i++)
+	{
+		std::cout << std::left << setw(12) << p_no[i] << setw(13) << quantity[i] 
+			<< '$' << setw(14) << std::fixed << setprecision(2) << unit_price[i] 
+			<< '$' << setw(12) << quantity[i] * unit_price[i] << std::endl;
+		total += (quantity[i] * unit_price[i]);
+	}
+
+	std::cout << std::right << setw(41) << '$' << total << std::endl;
+	for (size_t i{}; i < 53; i++)
+		std::cout << '_';
+	std::cout << std::endl;
+
+	system("pause");
+}
