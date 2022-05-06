@@ -22,16 +22,16 @@ int main()
 	switch (choice)
 	{
 	case 1:
-		cout << "Keanu Reeves" << endl;
+		cout << star1 << endl;
 		break;
 	case 2:
-		cout << "Tom Hanks" << endl;
+		cout << star2 << endl;
 		break;
 	case 3:
-		cout << "Chris Hemsworth" << endl;
+		cout << star3 << endl;
 		break;
 	case 4:
-		cout << "Oscar Isaac" << endl;
+		cout << star4 << endl;
 		break;
 	default:
 		cout << "You can dream it up" << endl;
