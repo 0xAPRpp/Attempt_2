@@ -1,0 +1,19 @@
+/*Build -> Configuration Manager -> Platform -> 32 or 64 for 4 or 8 bytes*/
+
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	int* x{};
+
+	std::cout << sizeof(x) << endl;
+
+}
