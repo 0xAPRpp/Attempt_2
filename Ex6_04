@@ -1,0 +1,39 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	const char* names[]{ { "Keanu Reeves" }, { "Tom Hanks" },{ "Chris Hemsworth" },{ "Oscar Isaac" } };
+		
+	size_t choice{};
+
+	std::cin >> choice;
+
+	switch (choice)
+	{
+	case 1:
+		cout << names[choice] << endl;
+		break;
+	case 2:
+		cout << names[choice] << endl;
+		break;
+	case 3:
+		cout << names[choice] << endl;
+		break;
+	case 4:
+		cout << names[choice] << endl;
+		break;
+	default:
+		cout << "You can dream it up" << endl;
+		break;
+	}
+
+	system("pause");
+}	
