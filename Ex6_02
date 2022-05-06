@@ -1,0 +1,38 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	const double unit_price{2.95};
+
+	const double* p_up{&unit_price};
+
+	double count{};
+
+	double* p_c{ &count };
+
+	std::cin >> *p_c;
+
+	double discount{};
+
+	double* p_d{&discount};
+
+	if ((*p_c) >= 50)
+		*p_d = 7;
+	else 
+		*p_d = 0;
+
+	
+	std::cout << std::fixed << setprecision(2) << (((*p_c) * (*p_up)) - ((*p_c) * (*p_up) * ((*p_d)/100)))  << endl;
+
+
+
+	system("pause");
+}	
