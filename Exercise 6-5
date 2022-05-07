@@ -1,0 +1,31 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	size_t size{};
+	cin >> size;
+
+	std::unique_ptr<double[]> p_arr_floats{std::make_unique<double[]>(size)};
+
+	double total{};
+	for (size_t i{}; i < size; i++)
+	{
+		*(p_arr_floats.get() + i) = (1 / ((static_cast<double>(i) + 1) * (static_cast<double>(i) + 1)));
+		total += p_arr_floats[i];
+		
+	}
+
+	cout << total * 6.0 << endl;
+
+	cout << setprecision(15) << std::sqrt(total * 6.0) << endl;
+	
+	system("pause");
+}
