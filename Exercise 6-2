@@ -1,0 +1,42 @@
+/*Exercise 6-2. Revisit the previous exercise, but instead of accessing the array values
+using the loop counter, this time you should employ pointer increments (using the
+++ operator) to traverse the array when outputting it for the first time. After that, use
+pointer decrements (using --) to traverse the array again in the reverse direction.*/
+
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	const size_t count{ 50 };
+	size_t arr_of_num[count]{};
+
+	size_t* p_arr_of_num{ arr_of_num };
+
+	for (size_t i{}, value{1}; i < count; i++, value += 2)
+		*(arr_of_num + i) = value;
+
+	for (size_t i{}, perline{}; i < count; i++)
+	{
+		cout << setw(3) << *(p_arr_of_num++);
+		if (++perline % 10 == 0)
+			cout << endl;
+	}
+	cout << endl;
+	for (int i{49}, perline{}; i >= 0; i--)
+	{
+		cout << setw(3) << *(--p_arr_of_num);
+		if (++perline % 10 == 0)
+			cout << endl;
+	}
+
+
+	system("pause");
+}
