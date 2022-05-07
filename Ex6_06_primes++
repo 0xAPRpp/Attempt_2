@@ -1,0 +1,48 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	size_t no_of_primes{};
+	cin >> no_of_primes;
+
+	int* p_arr_of_primes{ new int[no_of_primes] {2} };
+
+	bool isprime{};
+	for (int i{1}, num{ 3 }; i < no_of_primes;)
+	{
+		isprime = true;
+		for (int j{ 2 }; j <= std::sqrt(num); j++)
+		{
+			if (num % j == 0)
+			{
+				isprime = false;
+				break;
+			}
+		}
+		if (isprime)
+		{
+			*(p_arr_of_primes + i) = num;
+			i++;
+		}
+		num += 2;
+	}
+
+	for (size_t i{}, perline{}; i < no_of_primes; i++)
+	{
+		std::cout << setw(7) << *(p_arr_of_primes + i);
+		if ((++perline % 10) == 0)
+			cout << endl;
+	}
+
+	delete[] p_arr_of_primes;
+
+	system("pause");
+}
