@@ -1,0 +1,43 @@
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	int arr_of_int[100];
+
+	bool isprime{};
+	for (size_t i{}, num{ 2 }; i < 100;)
+	{
+		isprime = true;
+		for (int j{ 2 }; j < num; j++)
+		{
+			if (num % j == 0)
+			{
+				isprime = false;
+				
+			}
+		}
+		if (isprime)
+		{
+			*(arr_of_int + i) = num;
+			i++;
+		}
+		num++;
+	}
+
+	for (size_t i{}, perline{}; i < 100; i++)
+	{
+		std::cout << setw(7) << *(arr_of_int + i);
+		if ((++perline % 10) == 0)
+			cout << endl;
+	}
+
+	system("pause");
+}
