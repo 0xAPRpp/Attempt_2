@@ -1,0 +1,39 @@
+/*Exercise 6-1. Write a program that declares and initializes an array with the first 50 odd
+(as in not even) numbers. Output the numbers from the array ten to a line using pointer
+notation and then output them in reverse order, also using pointer notation.*/
+
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	const size_t count{ 50 };
+	size_t arr_of_num[count]{};
+
+	for (size_t i{}, value{1}; i < count; i++, value += 2)
+		*(arr_of_num + i) = value;
+
+	for (size_t i{}, perline{}; i < count; i++)
+	{
+		cout << setw(3) << *(arr_of_num + i);
+		if (++perline % 10 == 0)
+			cout << endl;
+	}
+	cout << endl;
+	for (int i{49}, perline{}; i >= 0; i--)
+	{
+		cout << setw(3) << *(arr_of_num + i);
+		if (++perline % 10 == 0)
+			cout << endl;
+	}
+
+
+	system("pause");
+}
