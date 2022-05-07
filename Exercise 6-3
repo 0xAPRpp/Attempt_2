@@ -1,0 +1,39 @@
+/*Exercise 6-3. Write a program that reads an array size from the keyboard and
+dynamically allocates an array of that size to hold floating-point values. Using pointer
+notation, initialize all the elements of the array so that the value of the element at
+index position n is 1 / (n + 1)2. Calculate the sum of the elements using array notation,
+multiply the sum by 6, and output the square root of that result.*/
+
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	size_t size{};
+	cin >> size;
+
+	double* p_arr_floats{ new double[size] };
+
+	double total{};
+	for (size_t i{}; i < size; i++)
+	{
+		*(p_arr_floats + i) = (1 / ((static_cast<double>(i) + 1) * (static_cast<double>(i) + 1)));
+		total += p_arr_floats[i];
+		cout << total << endl;
+	}
+
+	cout << total * 6.0 << endl;
+
+	cout << setprecision(15) << std::sqrt(total * 6.0) << endl;
+
+	delete[] p_arr_floats;
+
+	system("pause");
+}
