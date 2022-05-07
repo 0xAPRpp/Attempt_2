@@ -1,0 +1,37 @@
+/*Exercise 6-4. Repeat the calculation in Exercise 6-3 but using a vector<> container
+allocated in the free store. Test the program with more than 100,000 elements. Do you
+notice anything interesting about the result?*/
+
+# include <iostream>
+# include <cctype>
+# include <iomanip>
+# include <array>
+# include <cmath>
+# include <vector>
+# include <memory>
+
+using namespace std;
+
+int main()
+{
+	size_t size{};
+	cin >> size;
+
+	std::vector<double>* p_arr_floats{ new std::vector<double>{} };
+
+	double total{};
+	for (size_t i{}; i < size; i++)
+	{
+		(* p_arr_floats).push_back  (1 / ((static_cast<double>(i) + 1) * (static_cast<double>(i) + 1)));
+		total += (*p_arr_floats)[i];
+		
+	}
+
+	cout << total * 6.0 << endl;
+
+	cout << setprecision(15) << std::sqrt(total * 6.0) << endl;
+
+	delete p_arr_floats;
+
+	system("pause");
+}
