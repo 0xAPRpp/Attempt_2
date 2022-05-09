@@ -1,0 +1,17 @@
+# include <iostream>
+# include <string>
+using namespace std;
+
+int main()
+{
+	std::string first{}, second{};
+
+	cin >> first >> second;
+
+	cout << first + " " + second << endl;
+	cout << std::size(first + " " + second) << endl;
+
+
+
+	system("pause");
+}
