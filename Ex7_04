@@ -1,0 +1,18 @@
+# include <iostream>
+# include <string>
+# include <vector>
+# include <cctype>
+
+using namespace std;
+
+int main()
+{
+	std::string sentence{ "Manners maketh man" };
+	std::string word{ "man" };
+
+	cout << sentence.find(word) << endl;
+	cout << sentence.find("ma", 16) << endl;
+	cout << sentence.find("ma", 4) << endl;
+
+	system("pause");
+}
