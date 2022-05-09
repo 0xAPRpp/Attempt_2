@@ -1,0 +1,48 @@
+# include <iostream>
+# include <string>
+# include <vector>
+# include <cctype>
+
+using namespace std;
+
+int main()
+{
+	std::vector<std::string> names{};
+
+	std::string name{};
+
+
+	char yes_no{ 'y' }, space_reader{};
+	while (tolower(yes_no == 'y'))
+	{
+		cin >> name;
+		names.push_back(name);
+		
+		cin >> yes_no;		
+	}
+
+	bool swapped{};
+	size_t loop_counter{};
+	while(true)
+	{
+		swapped = false;
+		for (size_t i{}; i < (std::size(names) - 1); i++)
+		{
+			if (names[i] > names[i + 1])
+			{
+				names[i].swap(names[i + 1]);
+				swapped = true;
+			}
+		}
+		loop_counter++;
+		if (swapped == false)
+			break;
+	}
+
+	cout << loop_counter << endl;
+
+	for (auto x : names)
+		cout << x << endl;
+
+	system("pause");
+}
