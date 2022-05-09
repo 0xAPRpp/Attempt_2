@@ -1,0 +1,26 @@
+# include <iostream>
+# include <string>
+# include <vector>
+# include <cctype>
+
+using namespace std;
+
+int main()
+{
+	std::string sentence{};
+	std::string word{  };
+
+	std::getline(cin, sentence);
+	cin >> word;
+
+	size_t count{};
+	for (size_t i{}; (sentence.find(word, i) != std::string::npos); (i = sentence.find(word, i) +  std::size(word)))
+	{
+		cout << i << " " << sentence.find(word, i) << endl;
+		count++;
+	}
+
+	std::cout << count << endl;
+
+	system("pause");
+}
