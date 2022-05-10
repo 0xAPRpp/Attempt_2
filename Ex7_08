@@ -1,0 +1,42 @@
+# include <iostream>
+# include <string>
+# include <vector>
+# include <cctype>
+# include <iomanip>
+# include <sstream>
+
+using namespace std;
+
+int main()
+{
+	size_t size{};
+	cin >> size;
+
+	std::unique_ptr<std::vector<double>> values{ std::make_unique < std::vector<double>>(size) };
+
+	cout << std::size((*values)) << endl;
+
+	for (size_t i{}; i < size; i++)
+	{
+
+		cin >> (*values)[i];
+		cout << (*values)[i];
+	}
+
+	std::stringstream ss{};
+
+	cout << endl;
+
+	for (size_t i{}, perline{}; i < size; i++)
+	{
+
+		ss << setprecision(4) << setw(7) << std::right << (*values)[i];
+		if (++perline % 5 == 0)
+			ss << endl;
+
+	}
+	
+	cout << ss.str() << endl;
+
+	system("pause");
+}
