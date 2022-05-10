@@ -1,0 +1,51 @@
+/*Exercise 7-6. Write a program that reads a text string of arbitrary length from the
+keyboard followed by a string containing one or more letters. Output a list of all the
+whole words in the text that begin with any of the letters, uppercase or lowercase.*/
+
+
+# include <iostream>
+# include <string>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	std::string text{};
+	std::string letters{};
+
+	std::vector<std::string> words{};
+
+	std::getline(cin, text, '*');
+	cin >> letters;
+
+	const std::string separators{ " ,;:.\"!?'\n" };
+	size_t start{ text.find_first_not_of(separators) }, end{};
+
+	while (start != std::string::npos)
+	{
+		end = text.find_first_of(separators, start + 1);
+		if ( end == std::string::npos)
+			end = text.length();
+
+		words.push_back(text.substr(start, end-start));
+
+		start = text.find_first_not_of(separators, end + 1);
+
+	}
+	
+	//for(const auto& x: words)		cout << x << endl;
+
+	for (size_t i{}; i < letters.length(); i++)
+	{
+		cout << letters[i] << endl;
+		for (size_t j{}; j < std::size(words); j++)
+		{
+			if (tolower(letters[i]) == tolower(words[j][0]))
+				cout << words[j] << endl;
+		}
+		cout << endl;
+	}
+
+	system("pause");
+}
