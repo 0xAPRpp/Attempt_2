@@ -1,0 +1,79 @@
+/*Exercise 7-2. Write a program that reads text entered over an arbitrary number of lines.
+Find and record each unique word that appears in the text and record the number of
+occurrences of each word. Output the words and their occurrence counts. Words and
+counts should align in columns. The words should align to the left; the counts to the
+right. There should be three words per row in your table.*/
+
+
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	std::string text{};
+	std::vector<std::string> words{};
+
+	std::getline(cin, text, '#');
+
+	const std::string separators{ " ,;:.\"!?'\n" };
+	size_t start{ text.find_first_not_of(separators) }, end{};
+
+	while (start != std::string::npos)
+	{
+		end = text.find_first_of(separators, start +1);
+		if (end == std::string::npos)
+			end = text.length();
+
+		words.push_back(text.substr(start, end-start));
+
+		start = text.find_first_not_of(separators, end + 1);
+
+	}
+
+	size_t pl1{}, max_length{};
+	for (auto x : words)
+	{
+		if (x.length() > max_length)
+			max_length = x.length();
+
+		cout << x << " ";
+		if (++pl1 % 5 == 0)
+			cout << endl;
+	}
+
+	cout << endl;
+
+	size_t pl2{}, count{};
+	bool found{};
+	for (size_t i{}; i < std::size(words); i++)
+	{
+		count = 0;
+		
+		found = false;
+		for (size_t a{}; a < i; a++)
+		{
+			if (words[i] == words[a])
+				found = true;
+
+		}
+		if (found)
+			continue;
+
+		cout << setw(max_length + 1) << std::left << words[i];
+
+		for (size_t j{}; j < std::size(words); j++)
+		{
+			if (words[i] == words[j])
+				count++;
+		}
+		cout << setw(4) << std::right << count << " ";
+		if (++pl2 % 3 == 0)
+			cout << endl;
+	}
+	cout << endl;
+	system("pause");
+}
