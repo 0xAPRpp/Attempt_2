@@ -1,0 +1,54 @@
+/*Exercise 7-4. Write a program that prompts for the input of two words and determines
+whether one is an anagram of the other. An anagram of a word is formed by
+rearranging its letters, using each of the original letters precisely once. For instance,
+listen and silent are anagrams of one another, but listens and silent are not.*/
+
+
+# include <iostream>
+# include <string>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	std::string one{}, two{};
+
+	cin >> one >> two;
+
+	if (one.length() != two.length())
+	{
+		cout << "Not Anagram" << endl;
+		return 0;
+	}
+	else
+	{
+		bool matched{};
+		for (size_t i{}; i < one.length(); i++)
+		{
+			matched = false;
+			for (size_t j{}; j < two.length(); j++)
+			{
+				if (one[i] == two[j])
+				{
+					matched = true;
+					one.erase(i--, 1);
+					two.erase(j, 1);
+					break;
+				}
+
+			}
+			if (matched == false)
+			{			
+				cout << "Not Anagram" << endl;
+				return 0;
+			}
+		}
+
+
+	}
+	
+	cout << "Anagram" << endl;
+
+	system("pause");
+}
