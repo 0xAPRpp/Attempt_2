@@ -1,0 +1,30 @@
+# include <iostream>
+# include <string>
+# include <vector>
+# include <cctype>
+# include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	std::string text{};
+	
+	std::getline(cin, text, '*');
+
+	std::string word1{}, word2{};
+
+	cin >> word1 >> word2;
+		
+	for (; text.find(word1) != std::string::npos; )
+	{
+		
+		cout << text.find(word1) << endl;
+		text.replace(text.find(word1), word1.length(), word2);
+		cout << text << endl;
+	}
+
+	cout << text << endl;
+
+	system("pause");
+}
