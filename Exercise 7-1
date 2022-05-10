@@ -1,0 +1,48 @@
+/*Exercise 7-1. Write a program that reads and stores the first names of any number of
+students, along with their grades. Calculate and output the average grade and output
+the names and grades of all the students in a table with the name and grade for three
+students on each line.*/
+
+
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include <vector>
+
+
+using namespace std;
+
+int main()
+{
+	std::vector<std::string> names{};
+	std::vector<double> grades{};
+
+	std::string name{};
+	double g{}, total{};
+	char yes_no{ 'y' };
+	while (tolower(yes_no) == 'y')
+	{
+		cin >> name;
+		names.push_back(name);
+		cin >> g;
+		grades.push_back(g);
+
+		total += g;
+
+		cin >> yes_no;
+	}
+
+	cout << (total / static_cast<double>(std::size(names))) << endl;
+
+	size_t pl{};
+	for (size_t i{}; i < std::size(names); i++)
+	{
+		cout << setw(15) << names[i] << setw(5) << setprecision(4) << grades[i] << " ";
+		if (++pl % 3 == 0)
+			cout << endl;
+
+	}
+
+
+	system("pause");
+}
