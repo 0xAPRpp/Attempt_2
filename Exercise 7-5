@@ -1,0 +1,71 @@
+/*Exercise 7-5. Generalize the program of Exercise 7-4 such that it ignores spaces when
+deciding whether two strings are anagrams. With this generalized definition, funeral
+and real fun are considered anagrams, as are eleven plus two and twelve plus one,
+along with desperation and a rope ends it.*/
+
+
+# include <iostream>
+# include <string>
+# include <vector>
+
+using namespace std;
+
+int main()
+{
+	std::string one{}, two{};
+
+	std::getline(cin, one);
+	std::getline(cin, two);
+	
+	for (int i{}; i < one.length(); i++)
+	{
+		if (isspace(one[i]))
+			one.erase(i--, 1);
+	}
+
+	cout << one << endl;
+
+	for (int i{}; i < two.length(); i++)
+	{
+		if (isspace(two[i]))
+			two.erase(i--, 1);
+	}
+
+	cout << two << endl;
+
+	if (one.length() != two.length())
+	{
+		cout << "Not Anagram" << endl;
+		return 0;
+	}
+	else	
+	{
+		bool matched{};
+		for (int i{}; i < one.length(); i++)
+		{
+			matched = false;
+			for (int j{}; j < two.length(); j++)
+			{
+				if (one[i] == two[j])
+				{
+					matched = true;
+					one.erase(i--, 1);
+					two.erase(j, 1);
+					break;
+				}
+
+			}
+			if (matched == false)
+			{			
+				cout << "Not Anagram" << endl;
+				return 0;
+			}
+		}
+
+
+	}
+	
+	cout << "Anagram" << endl;
+
+	system("pause");
+}
