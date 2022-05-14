@@ -1,0 +1,28 @@
+# include <iostream>
+
+using namespace std;
+
+double testf(double, int);
+
+int main()
+{
+	double x{5};
+	int y{ 6 };
+
+	cout << x << y << endl;
+
+	cout << testf(x, y) << endl;
+
+	cout << x << y << endl;
+
+
+	
+	system("pause");
+}
+
+double testf(double d, int i)
+{
+	d++;
+	i++;
+	return d + i;
+}
