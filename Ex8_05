@@ -1,0 +1,24 @@
+# include <iostream>
+# include <array>
+
+using namespace std;
+
+double avg_from_array(double pointer_to_array[], size_t array_size);
+
+int main()
+{
+	const size_t size{6};
+	std::array<double, size> array_of_doubles{2,6,34,2,41,4};
+
+	cout << avg_from_array(array_of_doubles.data(), size) << endl;
+	
+	system("pause");
+}
+
+double avg_from_array(double pointer_to_array[], size_t array_size)
+{
+	double total{};
+	for (size_t i{}; i < array_size; i++)
+		total += *(pointer_to_array + i);
+	return total / static_cast<double>(array_size);
+}
