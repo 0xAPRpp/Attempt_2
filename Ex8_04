@@ -1,0 +1,31 @@
+# include <iostream>
+
+using namespace std;
+
+double testf(double* a, int* b);
+
+int main()
+{
+	double x{5};
+	int y{ 6 };
+
+	double* px{&x};
+	int* py{&y};
+
+	cout << x << y << endl;
+
+	cout << testf(px, py) << endl;
+
+	cout << x << y << endl;
+
+
+	
+	system("pause");
+}
+
+double testf(double* a, int* b)
+{
+	(* a)++;
+	(* b)++;
+	return *a + *b;
+}
