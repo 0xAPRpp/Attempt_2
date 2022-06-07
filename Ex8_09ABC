@@ -1,0 +1,36 @@
+# include <iostream>
+# include <array>
+# include <string>
+# include <vector>
+
+using namespace std;
+double avg_of_doubles_using_pass_by_reference(const double(&array_of_doubles)[10]);
+double modern_avg_of_doubles_using_pass_by_reference(const std::array<double, 10>& modern_array_of_doubles);
+
+int main()
+{
+	
+	double values[]{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 };
+	std::array<double,10> modern_values{ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0 };
+
+	cout << avg_of_doubles_using_pass_by_reference(values);
+	cout << modern_avg_of_doubles_using_pass_by_reference(modern_values);
+
+	system("pause");
+}
+
+double avg_of_doubles_using_pass_by_reference(const double (&array_of_doubles)[10])
+{
+	double total{};
+	for (size_t i{}; i < std::size(array_of_doubles); i++)
+		total += array_of_doubles[i];
+	return total / std::size(array_of_doubles);
+}
+
+double modern_avg_of_doubles_using_pass_by_reference(const std::array<double,10>& modern_array_of_doubles)
+{
+	double total{};
+	for (size_t i{}; i < std::size(modern_array_of_doubles); i++)
+		total += modern_array_of_doubles[i];
+	return total / modern_array_of_doubles.size();
+}
