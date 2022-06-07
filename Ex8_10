@@ -1,0 +1,22 @@
+# include <iostream>
+# include <array>
+# include <string>
+# include <vector>
+
+using namespace std;
+void double_value(double& value);
+
+int main()
+{
+	double d{1};
+	
+	double_value(d);
+	cout << std::fixed << d;
+
+	system("pause");
+}
+
+void double_value(double& value)
+{
+	value *= 2;
+}
