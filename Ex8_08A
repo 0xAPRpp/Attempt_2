@@ -1,0 +1,46 @@
+# include <iostream>
+# include <array>
+# include <string>
+# include <vector>
+
+using namespace std;
+void word_extractor(const std::string_view& r_text, std::vector<std::string>& r_words, const std::string_view& r_separators);
+void words_printer(const std::vector<std::string>& r_words);
+
+int main()
+{
+	std::string text{};
+	std::getline(cin, text, '*');
+
+	std::vector<std::string> words{};
+	const std::string separators{ " ,;:.\"!?'\n" };
+
+	word_extractor(text, words, separators);
+	words_printer(words);
+
+	system("pause");
+}
+
+void word_extractor(const std::string_view& r_text, std::vector<std::string>& r_words, const std::string_view& r_separators)
+{
+	size_t start{ r_text.find_first_not_of(r_separators) }, end{};
+	while (start != std::string::npos)
+	{
+		end = r_text.find_first_of(r_separators, start + 1);
+		if (end == std::string::npos)
+			end = r_text.length();
+		r_words.push_back(std::string{ r_text.substr(start, end - start) });
+		start = r_text.find_first_not_of(r_separators, end + 1);
+	}
+
+}
+
+void words_printer(const std::vector<std::string>& r_words)
+{
+
+	for (auto x : r_words)
+	{
+		cout << x << endl;
+	}
+
+}
