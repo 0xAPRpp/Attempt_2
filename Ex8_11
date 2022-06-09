@@ -1,0 +1,45 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <string>
+# include <string_view>
+# include <vector>
+
+using namespace std;
+void values_printer(const int values[] = {nullptr}, const size_t size = 0, std::string_view title = "testing default argument values", const size_t width = 3, const size_t perline = 4);
+
+
+int main()
+{
+	const size_t size{ 12 }, num_chars{4};
+	const int pos_values[size]{ 1,2,3,4,5,6,7,8,9,10,11,12 };
+	char first_four_alphabets[num_chars]{ 'a', 'b','c','d' };
+
+	values_printer();
+	cout << endl;
+	values_printer(pos_values, size);
+	cout << endl;
+	values_printer(pos_values, size, std::string_view{first_four_alphabets,num_chars});
+	cout << endl;
+	values_printer(pos_values, size, std::string_view{ first_four_alphabets,num_chars }, 6);
+	cout << endl;
+	values_printer(pos_values, size, std::string_view{ first_four_alphabets,num_chars }, 6, 2);
+	cout << endl;
+
+	system("pause");
+}
+
+void values_printer(const int values[], const size_t size, std::string_view title, const size_t width, const size_t perline)
+{
+	size_t count_perline{};
+	cout << title << endl;
+	for (size_t i{}; i < size; i++)
+	{
+		cout << setw(width) << values[i];
+		count_perline++;
+		if (count_perline % perline == 0)
+		{
+			std::cout << endl;
+		}
+	}
+}
