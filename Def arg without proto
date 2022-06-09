@@ -1,0 +1,22 @@
+# include <iostream>
+# include <array>
+# include <string>
+//# include <string_view>
+# include <vector>
+
+using namespace std;
+
+void printer_chars(std::string_view p_text = "ab")
+{
+	cout << p_text << endl;
+}
+
+int main()
+{
+	char text[]{'a','b','c','d', 'e'};
+
+	printer_chars();
+	printer_chars(std::string_view{text,std::size(text)});
+
+	system("pause");
+}
