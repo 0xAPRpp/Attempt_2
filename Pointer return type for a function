@@ -1,0 +1,32 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <string>
+# include <string_view>
+# include <vector>
+# include <cctype>
+
+using namespace std;
+int* find_larger(int* p_value1, int* p_value2);
+
+int main(int argc, char* argv[])
+{
+	int a{std::stoi(argv[1])}, b{ std::stoi(argv[2]) };
+
+	*find_larger(&a, &b) = 5;
+
+	cout << a << " " << b;
+
+	system("pause");
+}
+
+int* find_larger(int* p_value1, int* p_value2)
+{
+	if (*p_value1 > *p_value2)
+		return p_value1;
+	else
+		if (*p_value1 < *p_value2)
+			return p_value2;
+		else
+			return nullptr;
+}
