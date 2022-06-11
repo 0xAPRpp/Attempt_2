@@ -1,0 +1,42 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <string>
+# include <string_view>
+# include <vector>
+# include <cctype>
+# include <memory>
+# include <optional>
+
+using namespace std;
+
+std::optional<size_t> find_last(std::string_view str, const char ch, std::optional<size_t> index_value = std::nullopt)
+{
+	size_t index{ index_value.value_or(str.size() - 1) };
+	while (true)
+	{
+		if (str[index] == ch)
+			return index;
+		if (index == 0)
+			return std::nullopt;
+		--index;
+	}
+
+}
+
+int main(int argc, char* argv[])
+{	
+	const optional<size_t> found_a{find_last(argv[1], 'a')};
+	if(found_a)
+		cout << *found_a << endl;
+
+	const optional<size_t> found_b{ find_last(argv[1], 'b') };
+	if (found_b.has_value())
+		cout << found_b.value() << endl;
+
+	const optional<size_t> found_early_i{ find_last(argv[1], 'i', 5) };
+	if (found_early_i != std::nullopt)
+		cout << *found_early_i << endl;
+
+	system("pause");
+}
