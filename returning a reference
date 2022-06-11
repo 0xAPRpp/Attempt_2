@@ -1,0 +1,27 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <string>
+# include <string_view>
+# include <vector>
+# include <cctype>
+# include <memory>
+
+using namespace std;
+string& larger(string& s1, string& s2);
+
+int main(int argc, char* argv[])
+{	
+	std::string one{argv[1]}, two{argv[2]};
+	larger(one, two) = "This is the larger one";
+
+	cout << one << endl;
+	cout << two << endl;
+	
+	system("pause");
+}
+
+string& larger(string& s1, string& s2)
+{
+	return s1 > s2 ? s1 : s2;
+}
