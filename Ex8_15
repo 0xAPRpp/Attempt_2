@@ -1,0 +1,68 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <string>
+# include <string_view>
+# include <vector>
+# include <cctype>
+# include <memory>
+# include <optional>
+
+using namespace std;
+const int& find_largest_value(const int values[], size_t size);
+const double& find_largest_value(const double values[], size_t size);
+std::string_view find_largest_value(const std::vector<std::string>& values, size_t size);
+
+int main(int argc, char* argv[])
+{
+	std::unique_ptr<int[]> u_ptr_int_arr{ std::make_unique<int[]>(std::stoi(argv[1])) };
+	for (size_t i{}, j{2}; i < std::stoi(argv[1]); i++,j++)
+	{
+		u_ptr_int_arr[i] = std::stoi(argv[j]);
+	}
+
+	const double double_values[]{1.5, 44.6, 13.7, 21.2, 6.7};
+	const int int_values[]{ 15, 44, 13, 21, 6, 8, 5, 2 };
+	const std::vector<std::string> 
+		string_values{"Charles Dickens", "Emily Bronte", "Jane Austen", "Henry James", "Arthur Miller"}; 
+
+	cout << find_largest_value(u_ptr_int_arr.get(), std::stoi(argv[1])) << endl;
+	cout << find_largest_value(double_values, std::size(double_values)) << endl;
+	cout << find_largest_value(int_values, std::size(int_values)) << endl;
+	cout << find_largest_value(string_values, std::size(string_values)) << endl;
+
+	system("pause");
+}
+
+const int& find_largest_value(const int values[], size_t size)
+{
+	size_t index_max{}; 	
+	for (size_t i{}; i < size; i++)
+	{
+		if (values[i] > values[index_max])
+			index_max = i;
+	}
+	return values[index_max];
+}
+
+const double& find_largest_value(const double values[], size_t size)
+{
+	size_t index_max{};
+	for (size_t i{}; i < size; i++)
+	{
+		if (values[i] > values[index_max])
+			index_max = i;
+	}
+	return values[index_max];
+}
+
+std::string_view find_largest_value(const std::vector<std::string>& values, size_t size)
+{
+	size_t index_max{};
+	for (size_t i{}; i < size; i++)
+	{
+		if (values[i] > values[index_max])
+			index_max = i;
+	}
+	return values[index_max];
+}
