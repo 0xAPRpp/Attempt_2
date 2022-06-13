@@ -1,0 +1,37 @@
+# include <iostream>
+# include <iomanip>
+# include <array>
+# include <string>
+# include <string_view>
+# include <vector>
+# include <cctype>
+# include <memory>
+# include <optional>
+
+using namespace std;
+double larger(double a, double b);
+double larger( int& a,  int& b);
+
+int main(int argc, char* argv[])
+{
+	double a{stod(argv[1])}, b{ stod(argv[2]) };
+	int x{}, y{1213};
+
+	cout << larger(a, b) << endl;
+	cout << larger(static_cast<int>(a), static_cast<int>(b)) << endl;
+	cout << larger(x, y) << endl;
+
+	system("pause");
+}
+
+double larger(double a, double b)
+{
+	cout << "1" << endl;
+	return a > b ? a : b;
+}
+
+double larger(int& a, int& b)
+{
+	cout << "2" << endl;
+	return a > b ? a : b;
+}
