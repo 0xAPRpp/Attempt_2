@@ -1,0 +1,23 @@
+# include <iostream>
+# include <string>
+# include <cctype>
+
+using namespace std;
+double power(double x, int n);
+
+int main(int argc, char* argv[])
+{
+	cout << power(stod(argv[1]), stoi(argv[2]));
+	system("pause");
+}
+
+double power(double x, int n)
+{
+	if (n == 1)
+		return x;
+	
+	if (n < 0)
+		return 1.0 / power(x, -n);
+	else
+		return x * power(x, n - 1);
+}
