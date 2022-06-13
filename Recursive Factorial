@@ -1,0 +1,20 @@
+# include <iostream>
+# include <string>
+# include <cctype>
+
+
+using namespace std;
+long long factorial_ud(long long n);
+
+int main(int argc, char* argv[])
+{
+	cout << factorial_ud(stoi(argv[1])) << endl;
+	system("pause");
+}
+
+long long factorial_ud(long long n)
+{
+	if (n == 1)
+		return n;
+	return n * factorial_ud(n - 1);
+}
