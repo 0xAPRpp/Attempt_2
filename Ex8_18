@@ -1,0 +1,104 @@
+# include <iostream>
+# include <vector>
+# include <string>
+# include <cctype>
+
+using namespace std;
+void words_extractor(string_view sv_text, string_view sv_separators, std::vector<std::string>& r_words);
+void ud_swap(std::vector<std::string>& r_words, size_t index_1, size_t index_2);
+void q_sort(std::vector<std::string>& r_words, size_t start, size_t end);
+
+int main(int argc, char* argv[])
+{
+	std::string text{};
+	std::getline(cin, text, '*');
+
+	std::string separators{ " ,.!?\"\n" };
+	std::vector<std::string> words{};
+
+	words_extractor(text, separators, words);
+
+	for (auto x : words)
+		cout << x << endl;
+
+	cout << "calling q_sort" << endl;
+	q_sort(words, 0, words.size() - 1);
+
+	cout << endl;
+	for (auto x : words)
+		cout << x << endl;
+	cout << endl;
+
+	system("pause");
+}
+
+void words_extractor(string_view sv_text, string_view sv_separators, std::vector<std::string>& r_words)
+{
+	cout << "starting words_extractor" << endl;
+	size_t start{ sv_text.find_first_not_of(sv_separators) }, end{};
+	while (start != std::string::npos)
+	{
+		end = sv_text.find_first_of(sv_separators, start + 1);
+		if (end == std::string::npos)
+			end = sv_text.length();
+		r_words.push_back(std::string{ sv_text.substr(start, end - start) });
+		start = sv_text.find_first_not_of(sv_separators,end+1);
+	}
+	cout << "words_extractor ends" << endl;
+	return;
+}
+
+void q_sort(std::vector<std::string>& r_words, size_t start, size_t end)
+{
+	cout << "starting q_sort with start/end: " << start <<" " <<end << endl;
+	if (end <= start)
+		return;
+
+	//finding the mid word
+	size_t mid{(start+end)/2};
+	cout << "mid is: " << mid << endl;
+	
+	ud_swap(r_words, start, mid);
+	cout << "ud_swap with: " << start <<" "<< mid << endl;
+
+	size_t current{ start + 1 };
+	cout << "current is: " << current << endl;
+	//moving words smaller than mid word to the left
+	for (size_t i{start+1}; i <= end; i++)
+	{
+		cout << "loop starts with: " << i << " " << start << endl;
+		if (r_words[i] < r_words[start])
+		{
+			ud_swap(r_words, i, current);
+			current++;
+		}
+		cout << "after a loop" << endl;
+		cout << "current is: " <<current<< endl;
+		for (auto x : r_words)
+			cout << x << endl;
+	}
+	ud_swap(r_words, start, current-1);
+
+	for (auto x : r_words)
+		cout << x << endl;
+	cout << "ending q_sort" << endl;
+	
+	if( (current >= 2) && ( (current-2) >= start))
+	{
+		cout << "starting q_sort left" << endl;
+		q_sort(r_words, start, current - 2);
+	}
+	if(end>=current)
+	{
+		cout << "starting q_sort right" << endl;
+		q_sort(r_words, current, end);
+	}
+}
+
+void ud_swap(std::vector<std::string>& r_words, size_t index_1, size_t index_2)
+{
+	std::string copy{};
+	copy = r_words[index_1];
+	r_words[index_1] = r_words[index_2];
+	r_words[index_2] = copy;
+}
