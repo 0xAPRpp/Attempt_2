@@ -1,0 +1,35 @@
+# include <iostream>
+# include <string>
+
+using namespace std;
+double power(double x, int n);
+
+int main(int argc, char* argv[])
+{
+	cout << power(stod(argv[1]), stoi(argv[2]));
+	system("pause");
+}
+
+double power(double x, int n)
+{
+	static size_t count_even{}, count_odd{};
+	double y{};
+	cout << x << "^" << n << endl;
+	if (n == 1)
+		return x;
+
+	if (n < 0)
+		return 1.0 / power(x, -n);
+	else
+		if (n % 2 == 0)
+		{
+			cout << "count_even is: " << ++count_even << endl;
+			y =  power(x, n / 2);
+		}
+		else
+		{
+			cout << "count_odd is: " <<  ++count_odd << endl;
+			return x * power(x, n - 1);
+		}
+	return y * y;
+}
