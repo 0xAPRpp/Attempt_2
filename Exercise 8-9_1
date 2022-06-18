@@ -1,0 +1,54 @@
+# include <iostream>
+# include <string>
+
+using namespace std;
+double power(double x, int n);
+double ud_multiplicator(double a, double b);
+
+int main(int argc, char* argv[])
+{
+	cout << std::fixed << power(stod(argv[1]), stoi(argv[2]));
+		
+	system("pause");
+}
+
+double power(double x, int n)
+{
+	if (n == 0)
+		return 1;
+	double total{x};
+	if (n == 1)
+		return x;
+	int m{n};
+	if (n < 0)
+		n *= -1;
+	cout << "total = " << total << endl;
+	cout << total << " *= power(" << x << ", " << (n / 2) - 1 << "); " << endl;
+	total = ud_multiplicator(total, power(x, (n/2)-1));
+	cout << "total = " << total << endl;
+	cout << m << endl;
+	if (m > 0)
+	{
+		if (m % 2 == 0)
+			return total * total;
+		else
+			return total * total * x;
+	}
+	else
+	{
+		if (m % 2 == 0)
+			return 1/(total * total);
+		else
+			return 1/(total * total * x);
+	
+	}
+}
+
+double ud_multiplicator(double a, double b)
+{
+	static size_t count{};
+	cout << "Multiplying " << ++count << " time/s" << endl;
+	return a * b;
+
+
+}
