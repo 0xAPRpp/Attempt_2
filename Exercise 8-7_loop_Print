@@ -1,0 +1,27 @@
+# include <iostream>
+# include <string>
+
+using namespace std;
+void ud_fibonacci(size_t n);
+
+int main(int argc, char* argv[])
+{
+	ud_fibonacci(stoi(argv[1]));
+		
+		
+	system("pause");
+}
+
+void ud_fibonacci(size_t n)
+{
+	static unsigned long long value1{ 1 }, value2{ 1 }, total{};
+	cout << value1 << endl;
+	cout << value2 << endl;
+	for (size_t i{ 1 }; i < n; i++)
+	{
+		total = value1 + value2;
+		cout << total << endl;
+		value1 = value2;
+		value2 = total;
+	}
+}
