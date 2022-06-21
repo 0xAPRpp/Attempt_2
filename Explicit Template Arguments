@@ -1,0 +1,24 @@
+# include <iostream>
+# include <string>
+
+using namespace std;
+template <typename T1, typename T2> T1 ud_t_larger(T1 value1, T1 value2, T2 value);
+
+int main(int argc, char* argv[])
+{
+	cout << std::fixed<< ud_t_larger<double, int>(1, 2, 1.1) << endl;
+	cout << std::fixed << ud_t_larger<int , double>(2.1, 3.1, 11l) << endl;
+	cout << ud_t_larger('a', 'b', "ab") << endl;
+	cout << ud_t_larger("template", "function", 't') << endl;
+	cout << ud_t_larger(4.1f, 0.2f, 10) << endl;
+	cout << ud_t_larger(3ll, 4ll, 11.1l) << endl;
+		
+		
+	system("pause");
+}
+
+template <typename T1, typename T2> T1 ud_t_larger(T1 value1, T1 value2, T2 value)
+{
+	cout << value << endl;
+	return value1 > value2 ? value1 : value2;
+}
