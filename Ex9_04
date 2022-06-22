@@ -1,0 +1,31 @@
+# include <iostream>
+# include <string>
+# include <vector>
+
+using namespace std;
+template<typename T1, typename T2> auto ud_t_vector_product(const std::vector<T1>& v1, const std::vector<T2>& v2)
+{
+	decltype(v1[0] * v2[0]) sum{};
+	if (v1.size() != v2.size())
+	{
+		cout << "Error: Sizes don't match: Value is: " << sum << endl;
+		return sum;
+	}
+
+	for (size_t i{}; i < v1.size(); i++)
+		sum += v1[i] * v2[i];
+
+	return sum;
+}
+
+int main(int argc, char* argv[])
+{
+	std::vector<int> ud_vector_of_ints1{1, 2,3,25};
+	std::vector<int> ud_vector_of_ints2{ 2, 4,6,50,1 };
+	std::vector<double> ud_vector_of_doubles1{ 0.2, 4.0,0.6,5.0 };
+	std::vector<std::string> ud_vector_of_strings1{ "ab", "bc", "zx", "Ge"};
+
+	cout << ud_t_vector_product(ud_vector_of_ints1, ud_vector_of_ints2) << endl;
+
+	system("pause");
+}
