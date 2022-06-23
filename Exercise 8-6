@@ -1,0 +1,109 @@
+# include <iostream>
+# include <string>
+# include <vector>
+# include <optional>
+# include <array>
+
+using namespace std;
+std::optional<int> store_grades(std::vector<int>& grades);
+void ud_f_qsort(std::vector<int>& grades, size_t start, size_t end);
+void ud_f_swap(std::vector<int>& grades, size_t index1, size_t index2);
+void print_array(const std::array<int, 5>& arr_ints);
+double find_median(const std::vector<int>& grades);
+
+int main(int argc, char* argv[])
+{
+	std::vector<int> grades{};
+
+	const size_t size{5};
+	std::array<int, size> highest_five{}, lowest_five{};
+
+	if ((store_grades(grades)) != std::nullopt)
+	{
+		for (auto x : grades)
+			cout << x << endl;
+	}
+	else
+		cout << "Error: too few grades entered" << endl;
+
+	ud_f_qsort(grades, 0, grades.size() - 1);
+	
+	cout << "After Sort" << endl;
+	for (auto x : grades)
+		cout << x << endl;
+
+	cout << "Highest 5 Grades" << endl;
+	for (size_t i{}, j{ grades.size() - 1 }; i < size; i++, j--)
+		highest_five[i] = grades[j];
+	print_array(highest_five);
+
+	cout << "Lowest 5 Grades" << endl;
+	for (size_t i{}; i < size; i++ )
+		lowest_five[i] = grades[i];
+	print_array(lowest_five);
+
+	cout << "Median is: " << find_median(grades) << endl;
+
+	system("pause");
+}
+
+std::optional<int> store_grades(std::vector<int>& grades)
+{
+	cout << "Enter grades, negative value to stop: "<<endl;
+	int grade{};
+	size_t count{};
+	while (true)
+	{
+		cin >> grade;
+		if ((grade < 0) && (count < 5))
+			return std::nullopt;
+		else
+			if (grade >= 0)
+			{
+				grades.push_back(grade);
+				count++;
+			}
+			else
+				return 1;
+	}
+}
+
+void ud_f_qsort(std::vector<int>& grades, size_t start, size_t end)
+{
+	if (!(start < end))
+		return;
+	ud_f_swap(grades, start, (start+end)/2);
+	size_t current{start};
+	for (size_t i{ start+1 }; i <= end; i++)
+	{
+		if(grades[i] < grades[start])
+			ud_f_swap(grades, ++current, i);
+	}
+	ud_f_swap(grades, start, current);
+	if (current > start)
+		ud_f_qsort(grades, start, current - 1);
+	if (end > (current + 1))
+		ud_f_qsort(grades, current+1, end);
+}
+
+void ud_f_swap(std::vector<int>& grades, size_t index1, size_t index2)
+{
+	int temp{};
+	temp = grades[index1];
+	grades[index1] = grades[index2];
+	grades[index2] = temp;
+}
+
+void print_array(const std::array<int, 5>& arr_ints)
+{
+	for (auto x : arr_ints)
+		cout << x << endl;
+}
+
+double find_median(const std::vector<int>& grades)
+{
+	if (grades.size() % 2 != 0)
+		return grades[grades.size() / 2];
+	else
+		return (grades[grades.size() / 2] + grades[(grades.size() / 2) - 1]) / 2.0;
+}
