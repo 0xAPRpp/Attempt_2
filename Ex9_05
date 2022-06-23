@@ -1,0 +1,21 @@
+# include <iostream>
+# include <string>
+# include <vector>
+
+using namespace std;
+template<size_t N, typename T> auto prints_array_of_any_type(const T(&arr_values)[N])
+{
+	for (auto x : arr_values)
+		cout << x << endl;
+}
+
+int main(int argc, char* argv[])
+{
+	int arr_ints[]{1,2,3,4};
+	double arr_dbls[]{ 1.1,2.2,3.3,4.1, 2.3 };
+	prints_array_of_any_type(arr_ints);
+	prints_array_of_any_type<std::size(arr_dbls)>(arr_dbls);
+
+	system("pause");
+}
+
