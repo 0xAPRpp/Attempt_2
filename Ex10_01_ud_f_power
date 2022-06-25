@@ -1,0 +1,29 @@
+double ud_f_power(double x, int n)
+{
+	double total{ 1 };
+	if (n == 0)
+		return 1;
+	int m{ n };
+	if (n < 0)
+		n *= -1;
+
+	total = ud_f_power(x, n / 2);
+
+	if (m > 0)
+	{
+		if (n % 2)
+			if (total == 1)
+				return x;
+			else
+				return ((x*total)* total);
+		else 
+			return (total * total);
+	}
+	else
+	{
+		if (n % 2)
+			return 1 / ((x * total) * total);
+		else return
+			1 / (total * total);
+	}
+}
