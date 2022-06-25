@@ -1,0 +1,72 @@
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include <vector>
+
+using namespace std;
+bool check_prime(size_t number);
+std::vector<size_t> number_generator(size_t end, size_t start = 1);
+std::vector<size_t> prime_generator(std::vector<size_t>& numbers);
+
+int main(int argc, char* argv[])
+{
+	std::vector<size_t> numbers{ number_generator(static_cast<size_t>(stoi(argv[1]))) };
+	std::vector<size_t> primes{ prime_generator(numbers)};
+	for (auto x : numbers)
+		cout << x << endl;
+	for (auto x : primes)
+		cout << x << endl;
+	
+	//cout << std::boolalpha << check_prime(static_cast<size_t>(stoi(argv[1])));
+
+	system("pause");
+}
+
+bool check_prime(size_t number)
+{
+	if ((number == 0) || (number == 1))
+		return false;
+	else
+		if (number == 2)
+			return true;
+		else
+		{
+			bool is_prime{true};
+			for (size_t i{ 2 }; i < number; i++)
+			{
+				if (number % i == 0)
+				{
+					is_prime = false;
+					break;
+				}
+			}
+			if (is_prime)
+				return true;
+		}
+}
+
+std::vector<size_t> number_generator(size_t end, size_t start)
+{
+	std::vector<size_t> numbers{};
+	for (size_t i{ start }; i <= end; i++)
+		numbers.push_back(start++);
+	return numbers;
+}
+
+std::vector<size_t> prime_generator(std::vector<size_t>& numbers)
+{
+	std::vector<size_t> primes{};
+	size_t perline{};
+	for (auto x : numbers)
+	{
+		if (check_prime(x))
+		{
+			primes.push_back(x);
+			cout << setw(6) << x;
+			if (++perline % 15 == 0)
+				cout << endl;
+		}
+	}
+	cout << endl;
+	return primes;
+}
