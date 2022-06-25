@@ -1,0 +1,32 @@
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include <vector>
+
+using namespace std;
+template<typename T> T ud_t_clamp(T a, T b, T c);
+
+int main(int argc, char* argv[])
+{
+	int x{ 1 }, y{ 2 }, z{ 3 };
+	double a{ 3.1 }, b{ 2.1 }, c{ 1.1 };
+	char c1{ 'z'}, c2{'c'}, c3{'x'};
+	std::string one{"one"}, two{"two"}, three{"three"};
+
+	cout << ud_t_clamp(x, y, z) << endl;
+	cout << ud_t_clamp(a, b, c) << endl;
+	cout << ud_t_clamp(c1, c2, c3) << endl;
+	cout << ud_t_clamp(one, two, three) << endl;
+
+	system("pause");
+}
+
+template<typename T> T ud_t_clamp(T a, T b, T c)
+{
+	if (a < b)
+		return b;
+	if (a > c)
+		return c;
+	if((a >= b) && (a  <= c))
+		return a;
+}
