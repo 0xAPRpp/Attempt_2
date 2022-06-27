@@ -1,0 +1,17 @@
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include <vector>
+
+using namespace std;
+double ud_f_power(double n, unsigned e);
+double ud_f_power(double n, int e);
+extern const double power_range;
+
+int main(int argc, char* argv[])
+{
+	cout << ud_f_power(power_range, -3) << endl;
+	cout << ud_f_power(power_range, 3u) << endl;
+
+	system("pause");
+}
