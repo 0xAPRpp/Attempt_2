@@ -1,0 +1,13 @@
+# include <iostream>
+
+using namespace std;
+double ud_f_power(double x, unsigned n);
+
+double ud_f_power(double x, int n)
+{
+	cout << "Signed is called" << endl;
+	if (n >= 0)
+		return ud_f_power(x, static_cast<unsigned>(n));
+	else
+		return 1/(ud_f_power(x, static_cast<unsigned>(-n)));
+}
