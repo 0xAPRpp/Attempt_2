@@ -1,0 +1,14 @@
+# include <iostream>
+# include <string>
+# include <vector>
+# include <optional>
+# include <array>
+
+using namespace std;
+double ud_f_power(double x, int n);
+
+int main(int argc, char* argv[])
+{
+	cout <<ud_f_power(1.5, 1000) << endl;
+	system("pause");
+}
