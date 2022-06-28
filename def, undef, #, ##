@@ -1,0 +1,27 @@
+# include <io\
+stream>
+# include <iomanip>
+# include <string>
+# include <vector>
+using namespace std;
+# define test_macro_operators(a,b) void a##b() { cout << #a << #b << endl; } 
+
+test_macro_operators(test, macro)
+
+void ud_f_swap(int& x, int& y);
+
+int main(int argc, char* argv[])
+{
+	int x{ stoi(argv[1])}, y{ stoi(argv[2]) };
+	cout << x << " " << y << endl;
+	ud_f_swap(x, y);
+	cout << x << " " << y << endl;
+
+	testmacro();
+
+# undef test_macro_operators
+
+	testmacro();
+
+	system("pause");
+}
