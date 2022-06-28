@@ -1,0 +1,9 @@
+# define SWAP(A,B) A = B
+
+void ud_f_swap(int& x , int& y)
+{
+	int copy{};
+	SWAP(copy, x);//copy = x;
+	SWAP(x, y);//x = y;
+	SWAP(y, copy);//y = copy;
+}
