@@ -1,0 +1,17 @@
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include <vector>
+
+using namespace std;
+void ud_f_swap(int& x, int& y);
+
+int main(int argc, char* argv[])
+{
+	int x{ stoi(argv[1])}, y{ stoi(argv[2]) };
+	cout << x << " " << y << endl;
+	ud_f_swap(x, y);
+	cout << x << " " << y << endl;
+
+	system("pause");
+}
