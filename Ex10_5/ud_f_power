@@ -1,0 +1,6 @@
+double ud_f_power(double x, unsigned e)
+{
+	if (e == 0)
+		return 1.0;
+	return x * ud_f_power(x, e - 1);
+}
