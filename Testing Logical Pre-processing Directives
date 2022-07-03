@@ -1,0 +1,21 @@
+# include <iostream>
+# include <iomanip>
+
+#define ENGLISH 1
+#define LANGUAGE GERMAN
+#define LANGUAGE 1
+
+#if LANGUAGE == ENGLISH
+#define Greeting "Good Morning"
+#elif LANGUAGE == GERMAN
+#define Greeting "Guten Tag"
+#else
+#define Greeting "Subhodayam"
+#endif
+
+int main()
+{
+	std::cout << Greeting << std::endl;
+
+	system("pause");
+}
